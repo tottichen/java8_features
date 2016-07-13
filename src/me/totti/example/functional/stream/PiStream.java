@@ -2,7 +2,7 @@ package me.totti.example.functional.stream;
 
 import java.util.stream.Stream;
 
-import me.totti.example.supplier.PiSupplier;
+import me.totti.example.functional.supplier.PiSupplier;
 
 /**
  * Title: PiStream.class<br>
