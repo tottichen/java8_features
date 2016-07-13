@@ -1,4 +1,4 @@
-package me.totti.example.supplier;
+package me.totti.example.functional.supplier;
 
 import java.util.function.Supplier;
 

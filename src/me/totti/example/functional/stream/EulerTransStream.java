@@ -1,4 +1,4 @@
-package me.totti.example;
+package me.totti.example.functional.stream;
 
 import java.util.function.Function;
 import java.util.stream.Stream;
