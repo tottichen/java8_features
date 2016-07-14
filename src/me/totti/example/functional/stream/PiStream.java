@@ -7,7 +7,7 @@ import me.totti.example.functional.supplier.PiSupplier;
 /**
  * Title: PiStream.class<br>
  * Description: <br>
- * Copyright (c) 人和网版权所有 2016    <br>
+ * Copyright (c) TottiChen 2016    <br>
  * Create DateTime: 2016年07月13日 13:38 <br>
  *
  * @author TottiChen
