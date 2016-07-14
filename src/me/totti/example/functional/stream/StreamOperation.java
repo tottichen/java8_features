@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author TottiChen
  */
-public class StreamsOperation {
+public class StreamOperation {
 	private enum Status {
 		OPEN, CLOSED
 	}
@@ -90,22 +90,30 @@ public class StreamsOperation {
 		System.out.println(lastStatusTask);
 	}
 
-	public static void group() {
+	private static void group() {
 		Map<Status, List<Task>> map = tasks.stream().collect(Collectors.groupingBy(item -> item.getStatus(), Collectors.toList()));
 
 		System.out.println(map);
 	}
 
-	public static void simplegroup() {
+	private static void simplegroup() {
 		Map<Status, List<Task>> map = tasks.stream().collect(Collectors.groupingBy(Task::getStatus));
 
 		System.out.println(map);
 	}
 
-	public static void mappergroup() {
+	private static void mappergroup() {
 		Map<Status, List<Integer>> map = tasks.stream().collect(Collectors.groupingBy(item -> item.getStatus(), Collectors.mapping(item -> item.getPoints(), Collectors.toList())));
 
 		System.out.println(map);
+	}
+
+	private static void percentageCalculate() {
+		final double totalPoints = tasks.stream().map(Task::getPoints).reduce(0, Integer::sum);
+
+		final Collection<String> result = tasks.stream().mapToInt(Task::getPoints).asLongStream().mapToDouble(points -> points
+				/ totalPoints).boxed().mapToLong(weight -> (long) (weight * 100)).mapToObj(percentage -> percentage + "%").collect(Collectors.toList());
+		System.out.println(result);
 	}
 
 	public static void main(String[] args) {
@@ -152,5 +160,9 @@ public class StreamsOperation {
 		System.out.println("start mapper group ===== ");
 		mappergroup();
 		System.out.println("end mapper group ===== ");
+
+		System.out.println("start percentageCalculate ===== ");
+		percentageCalculate();
+		System.out.println("end percentageCalculate ===== ");
 	}
 }
